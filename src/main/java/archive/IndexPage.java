@@ -1,4 +1,4 @@
-package com.develogical.web;
+package archive;
 
 import java.io.PrintWriter;
 
@@ -14,5 +14,6 @@ public class IndexPage extends HtmlPage {
                   "</form>" +
                 "</p>");
     }
+    
     
 }

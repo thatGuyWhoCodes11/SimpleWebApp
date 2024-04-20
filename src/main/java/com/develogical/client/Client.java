@@ -4,8 +4,9 @@
  */
 package com.develogical.client;
 
-import com.develogical.ServerBuilder;
 import com.develogical.ServerManager;
+import com.develogical.web.RegisterPage;
+import com.develogical.web.SignInPage;
 import org.eclipse.jetty.server.Server;
 
 /**
@@ -16,8 +17,8 @@ public class Client {
         public static void main(String[] args) throws Exception {
             ServerManager serverM=ServerManager.getServerManager();
             Server server=serverM.createServer(9090);
-            ServerBuilder serverB=new ServerBuilder(server);
-            Server webServer=serverB.makeWebServer();
-            webServer.start();
+            serverM.registerPage(server, new SignInPage(), "/login");
+            serverM.registerPage(server, new RegisterPage(), "/register");
+            server.start();
     }
 }
