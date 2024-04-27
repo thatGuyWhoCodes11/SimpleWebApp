@@ -21,11 +21,10 @@ import org.eclipse.jetty.server.Handler;
 
 public class ServerManager {
 
-    private static Map<Integer, Server> serverInstances = new HashMap<Integer, Server>();
+    private final static Map<Integer, Server> serverInstances = new HashMap<Integer, Server>();
     private static ServerManager serverManager = null;
     private static ServletHandler handler = null;
-    private ServerManager() throws Exception {
-    }
+    private ServerManager(){}
 
     public static ServerManager getServerManager() throws Exception {
         if (serverManager == null) {
