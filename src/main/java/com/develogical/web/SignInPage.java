@@ -28,8 +28,8 @@ public class SignInPage extends Page {
     }
     private String fileReader() throws IOException{
         StringBuilder content = new StringBuilder();
-        File file = new File(
-            "C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SimpleWebApp\\src\\main\\java\\html stuff\\signInPage.html");
+        String file = new File(
+            "src\\main\\java\\html stuff\\signInPage.html").getAbsolutePath();
         BufferedReader br
             = new BufferedReader(new FileReader(file));
         String st;
