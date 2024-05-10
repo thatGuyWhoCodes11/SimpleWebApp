@@ -5,6 +5,7 @@
 package com.develogical.client;
 
 import com.develogical.ServerManager;
+import com.develogical.app.QueryProcessorProxy;
 import com.develogical.web.RegisterPage;
 import com.develogical.web.SignInPage;
 import org.eclipse.jetty.server.Server;
@@ -20,5 +21,10 @@ public class Client {
             serverM.registerPage(server, new SignInPage(), "/login");
             serverM.registerPage(server, new RegisterPage(), "/register");
             server.start();
-    }
+
+
+
+            QueryProcessorProxy proxy = new QueryProcessorProxy();
+proxy.processQuery("shakespeare");
+        }
 }
