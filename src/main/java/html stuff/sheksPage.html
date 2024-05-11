@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
 </head>
+
 <body>
-<h1>Search Results</h1>
-<p>Query: <strong>{{ query }}</strong></p>
-<p>Result: <strong>{{ result }}</strong></p>
-<p><a href="/searchPage">Back to Search Page</a></p>
+    <h1>Search Results</h1>
+    <p>Query: <strong>{{ query }}</strong></p>
+    <p>Result: <strong>{{ result }}</strong></p>
+    <p><a href="/search">Back to Search Page</a></p>
+    <script>
+        (async ()=>{
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchParam = urlParams.get('s');
+        const result = await fetch("http://localhost:9090/sendResult", { method: "POST", Headers: { "content-type": "application/json", Accept: "application/json" }, body: JSON.stringify({ "search": `${searchParam}` }) });
+        const stuff = await result.json();
+        const queryE = document.getElementsByTagName("p")[0];
+        const resultE = document.getElementsByTagName("p")[1];
+        queryE.innerHTML = `<p>Query: <strong>${searchParam}</strong></p>`;
+        resultE.innerHTML = `<p>Result: <strong>${stuff.result}</strong></p>`;
+        })()
+    </script>
 </body>
+
 </html>
