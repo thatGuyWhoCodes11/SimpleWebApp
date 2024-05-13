@@ -4,18 +4,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+// ApiResponse.java
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 public class ApiResponse {
 
-    private final String answer;
+    private final ResponseStrategy responseStrategy;
 
-    public ApiResponse(String answer) {
-        this.answer = answer;
+    public ApiResponse(ResponseStrategy responseStrategy) {
+        this.responseStrategy = responseStrategy;
     }
 
     public void writeTo(HttpServletResponse resp) throws IOException {
-        resp.setContentType("text/plain");
-        PrintWriter writer = resp.getWriter();
-        writer.println(answer);
-        //changes will be here
+        responseStrategy.writeTo(resp);
     }
 }

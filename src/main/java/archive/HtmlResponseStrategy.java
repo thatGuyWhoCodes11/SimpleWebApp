@@ -1,34 +1,27 @@
 package archive;
 
+// HtmlResponseStrategy.java
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-// HtmlPage.java
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+public class HtmlResponseStrategy implements ResponseStrategy {
 
-public abstract class HtmlPage {
+    private final String content;
 
+    public HtmlResponseStrategy(String content) {
+        this.content = content;
+    }
+
+    @Override
     public void writeTo(HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html");
         PrintWriter writer = resp.getWriter();
-        writeHeaderTo(writer);
-        writeContentTo(writer);
-        writeFooterTo(writer);
-    }
-
-    private void writeHeaderTo(PrintWriter writer) {
         writer.println("<html>");
         writer.println("<head></head>");
         writer.println("<body>");
-    }
-
-    private void writeFooterTo(PrintWriter writer) {
+        writer.println(content);
         writer.println("</body>");
         writer.println("</html>");
     }
-
-    protected abstract void writeContentTo(PrintWriter writer);
 }
