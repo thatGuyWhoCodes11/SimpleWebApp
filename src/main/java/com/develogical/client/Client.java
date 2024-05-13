@@ -34,6 +34,10 @@ public class Client {
             MongoNewAdapter.addEntry(new Document("User","ahmed"));
 
             QueryProcessorProxy proxy = new QueryProcessorProxy();
-proxy.processQuery("shakespeare");
+            proxy.processQuery("shakespeare");
+            User user1 = new User("khalid");
+            User user2 = new User("mohammad");
+            user1.sendMessage("hiiii");
+            user2.sendMessage("heya");
         }
 }
