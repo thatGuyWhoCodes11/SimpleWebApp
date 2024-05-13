@@ -15,13 +15,16 @@ public class PageFactory{
     }
 
 
-    public void getSignUpPage() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public SignInPage getSignUpPage() {
+        return new SignInPage();
     }
 
 
-    public void getHomePage() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public SheksPage getResultPage() {
+        return new SheksPage();
+    }
+    public SearchPage getSearchPage(){
+        return new SearchPage();
     }
     
 }
